@@ -1,29 +1,26 @@
 // =========================
-// RANDOM NUMBER
+//      RANDOM NUMBER
 // =========================
 
 let randomNumber = Math.floor(Math.random() * 100) + 1;
 
 // =========================
-// ATTEMPTS COUNT
+//      ATTEMPTS COUNT
 // =========================
 
 let totalAttempts = 0;
 
 // =========================
-// SELECT ELEMENTS
+//      SELECT ELEMENTS
 // =========================
 
 let guessInput = document.getElementById("guessInput");
-
 let guessBtn = document.getElementById("guessBtn");
-
 let message = document.getElementById("message");
-
 let attempts = document.getElementById("attempts");
 
 // =========================
-// CHECK GUESS FUNCTION
+//   CHECK GUESS FUNCTION
 // =========================
 
 function checkGuess() {
@@ -31,19 +28,12 @@ function checkGuess() {
   // IF GAME OVER → RESTART GAME
 
   if (guessBtn.innerHTML === "Restart Game") {
-
     randomNumber = Math.floor(Math.random() * 100) + 1;
-
     totalAttempts = 0;
-
     message.innerHTML = "";
-
     attempts.innerHTML = "Attempts: 0";
-
     guessInput.value = "";
-
     guessBtn.innerHTML = "Check Guess";
-
     return;
   }
 
@@ -55,7 +45,7 @@ function checkGuess() {
 
   if (userGuess < 1 || userGuess > 100 || isNaN(userGuess)) {
 
-    message.innerHTML = "❌ Please enter a valid number from 1 to 100";
+    message.innerHTML = "Please enter a valid number from 1 to 100";
 
     return;
   }
@@ -76,7 +66,7 @@ function checkGuess() {
 
   else {
 
-    message.innerHTML = `🎉 Correct Number! The number was ${randomNumber}`;
+    message.innerHTML = `🎉 Correct Number! The number was ${randomNumber}!`;
 
     guessBtn.innerHTML = "Restart Game";
   }
@@ -160,32 +150,3 @@ document.addEventListener("keydown", function (event) {
     event.preventDefault();
   }
 });
-
-// =========================
-// DETECT DEVTOOLS OPEN
-// =========================
-
-setInterval(function () {
-
-  if (
-    window.outerWidth - window.innerWidth > 160 ||
-    window.outerHeight - window.innerHeight > 160
-  ) {
-
-    document.body.innerHTML = `
-      <div style="
-        height:100vh;
-        display:flex;
-        justify-content:center;
-        align-items:center;
-        font-size:2rem;
-        font-family:Arial;
-        background:black;
-        color:white;
-      ">
-        Developer Tools Detected
-      </div>
-    `;
-  }
-
-}, 1000);
